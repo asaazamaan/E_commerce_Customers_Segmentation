@@ -1,28 +1,34 @@
 # E-commerce Customer Segmentation
 
+**Project files:** [Jupyter Notebook](E_commerce_Customers_Segmentation.ipynb) · [Segmentation Dashboard (PDF)](E-com_Customers_Segmentation_Dashboard.pdf)
+
 ## Project Overview
+
 This project focuses on segmenting e-commerce customers based on their transactional behavior and demographic information. Using **unsupervised learning techniques**, we aim to identify distinct customer groups to help optimize coupon distribution strategies for increased customer loyalty and satisfaction.
 
 ## Dataset Description
+
 The dataset consists of multiple interrelated tables that provide a comprehensive view of customer transactions and behaviors:
-Customers Table: Contains customer demographics, including gender and city information.
-Genders Table: Maps gender_id to gender labels (e.g., Male, Female).
-Cities Table: Maps city_id to city names.
-Transactions Table: Tracks coupon transactions, including transaction date, transactions status (subscribed or burned), and burn date and etc.
-Branches Table: Links branch IDs to merchant IDs.
-Merchants Table: Maps merchant IDs to merchant names.
+
+- **Customers Table:** Contains customer demographics, including gender and city information.
+- **Genders Table:** Maps `gender_id` to gender labels (e.g., Male, Female).
+- **Cities Table:** Maps `city_id` to city names.
+- **Transactions Table:** Tracks coupon transactions, including transaction status (subscribed or redeemed), transaction date, redemption date, and related fields.
+- **Branches Table:** Links branch IDs to merchant IDs.
+- **Merchants Table:** Maps merchant IDs to merchant names.
 
 ## Methodology
+
 1. **Data Preprocessing**
    - Merged multiple tables to create a unified dataset.
    - Converted merged tables into a customer-based table for clustering analysis.
-   - Handled categorical colmons.
+   - Handled categorical columns.
    - Removed unnecessary columns to reduce dimensionality.
-   - Handled missing values
+   - Handled missing values.
    - Checked duplicated rows to handle them.
    - Handled outliers using statistical techniques (IQR, log transformation).
    - Applied scaling, log transformation, and standardization for numerical stability.
-       
+
 2. **Feature Engineering**
    - Calculated customer tenure, preferred transaction month, preferred burn month, burned ratio, and days since last burn.
    - Identified preferred branches and merchants based on transaction frequency.
@@ -39,8 +45,9 @@ Merchants Table: Maps merchant IDs to merchant names.
    - **Davies-Bouldin Index**: Measures cluster compactness.
 
 ## 🔍 Key Findings (K = 2 vs. K = 3)
+
 | Metric | K = 2 | K = 3 | Best Choice |
-|--------|------|------|--------------|
+|---|---|---|---|
 | **Silhouette Score** | **0.2556** | 0.1420 | **K = 2** (better separation) |
 | **DB Index** | **1.27** | 2.08 | **K = 2** (more compact clusters) |
 | **PCA Visualization** | **Two distinct groups** | Overlapping clusters | **K = 2** |
@@ -51,6 +58,7 @@ Merchants Table: Maps merchant IDs to merchant names.
 - **DBSCAN failed to form meaningful clusters** due to high-dimensional noise.
 
 ## 🎯 Business Recommendations
+
 - **Cluster 0 (High Engagement):** Frequent coupon users → Offer loyalty rewards.
 - **Cluster 1 (Low Engagement):** Inactive users → Send targeted promotions & re-engagement offers.
 - K = 2 is recommended for a simpler and more interpretable segmentation strategy, ensuring distinct and well-separated customer groups. It allows for more effective targeting of high-value customers while identifying those needing engagement efforts.
@@ -58,15 +66,37 @@ Merchants Table: Maps merchant IDs to merchant names.
 
 ---
 
-## **Installation & Usage**
-### **Clone this repository**
+## Installation & Usage
+
+### 1. Clone this repository
+
 ```bash
 git clone https://github.com/asaazamaan/E_commerce_Customers_Segmentation.git
 cd E_commerce_Customers_Segmentation
 ```
 
----
-## **Acknowledgments**
-✔️ **Developed as part of the MLSC Data Science & Machine Learning Course Graduation Project**  
+### 2. Install dependencies
+
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn scipy openpyxl notebook
+```
+
+### 3. Open the analysis
+
+The dataset (`E-commerce_data.xlsx`) is included in the repository.
+
+Launch Jupyter Notebook:
+
+```bash
+jupyter notebook E_commerce_Customers_Segmentation.ipynb
+```
+
+Run the notebook cells in order to reproduce the analysis.
+
+You can also view the saved dashboard directly through the [Segmentation Dashboard (PDF)](E-com_Customers_Segmentation_Dashboard.pdf).
+
 ---
 
+## Acknowledgments
+
+✔️ **Developed as part of the MLSC Data Science & Machine Learning Course Graduation Project**
